@@ -1,0 +1,84 @@
+:root {
+  /* Light mode */
+  --primary-color: #fca311; /* Main color */
+  --secondary-color: #ff8000; /* Linear gradient color */
+  --background-color: #ffffff; /* Background color */
+  --text-color: #333333; /* Text color */
+  --border-color: #dddddd; /* Border color */
+
+  /* Dark mode */
+  --dark-primary-color: #e5a55e; /* Main color */
+  --dark-secondary-color: #ffb84d; /* Linear gradient color */
+  --dark-background-color: #333333; /* Background color */
+  --dark-text-color: #ffffff; /* Text color */
+  --dark-border-color: #999999; /* Border color */
+
+  /* Spacing */
+  --padding-small: 10px;
+  --padding-medium: 20px;
+  --padding-large: 30px;
+  --margin-small: 10px;
+  --margin-medium: 20px;
+  --margin-large: 30px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "poppins", sans-serif;
+  min-height: 100vh;
+}
+
+.dark-mode {
+  background-color: var(--dark-background-color);
+  color: var(--dark-text-color);
+}
+
+#toggle-mode-button {
+  position: absolute;
+  background-color: white;
+  border-radius: 50px;
+  font-size: 20px;
+  border: 1px solid var(--dark-background-color);
+  padding: 10px;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.hero_blob {
+  /* Set the background image and position */
+  background-image: url("../sources/hero_blob.svg");
+  background-position: -150px 50%;
+  background-repeat: no-repeat;
+  /* background-size: auto; */
+  outline: 2px solid red;
+
+  /* Set the width and height of the element */
+  width: 50%;
+  min-height: calc(100vh - (var(--padding-large)));
+
+  /* Add some padding to the top and bottom */
+  padding-top: var(--padding-large);
+  padding-left: 3%;
+
+  /* Center the text horizontally and vertically */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.logo {
+  width: 150px;
+}
+
+#walking_lottie {
+  width: 400px;
+  mix-blend-mode: luminosity;
+  margin-top: 150px;
+  margin-left: 5%;
+}

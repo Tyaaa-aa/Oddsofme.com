@@ -15,36 +15,32 @@ const animation = lottie.loadAnimation({
     path: 'sources/walking-lottie.json' // replace with your animation URL
 });
 
-// Define the start date for the counter (in milliseconds since the Unix epoch)
-const startDate = new Date('January 1, 2022 00:00:00 UTC').getTime();
+const counter = document.getElementById('odometer');
+od = new Odometer({
+    el: counter,
+    value: 8000000000,
+    duration: 1000,
+    theme: 'minimal'
+});
 
-// Define the estimated current population of the world
-const currentPopulation = 7794798739; // update with the latest estimate
+async function getData() {
+    const res = await fetch(
+        'https://real-time-statistics.p.rapidapi.com/counters/current_population', {
+            headers: {
+                'X-RapidAPI-Host': 'real-time-statistics.p.rapidapi.com',
+                'X-RapidAPI-Key': 'fe5cedd3b9mshdc2822c0764594ap180b52jsn1caaef072a89'
+                // free api, create your api key by signing up, api link : https://rapidapi.com/SAdrian/api/real-time-statistics/
+            }
+        }
+    )
+    const result = await res.json();
+    od.update(result.response);
+}
 
-// Get the current time (in milliseconds since the Unix epoch)
-const now = new Date().getTime();
+getData();
 
-// Calculate the elapsed time (in milliseconds)
-const elapsed = now - startDate;
+// Update the counter every 2 second
+setInterval(async () => {
+    getData();
+}, 2000);
 
-// Calculate the estimated current population based on the elapsed time
-const estimatedPopulation = Math.floor(currentPopulation + (elapsed * 2.6)); // assuming a growth rate of 2.6 people per second
-
-// Display the estimated population in the counter element
-const counter = document.getElementById('counter');
-counter.innerHTML = estimatedPopulation.toLocaleString();
-
-// Update the counter every second
-setInterval(() => {
-  // Get the current time (in milliseconds since the Unix epoch)
-  const now = new Date().getTime();
-
-  // Calculate the elapsed time (in milliseconds)
-  const elapsed = now - startDate;
-
-  // Calculate the estimated current population based on the elapsed time
-  const estimatedPopulation = Math.floor(currentPopulation + (elapsed * 2.6)); // assuming a growth rate of 2.6 people per second
-
-  // Display the updated estimated population in the counter element
-  counter.innerHTML = estimatedPopulation.toLocaleString();
-}, 1000);

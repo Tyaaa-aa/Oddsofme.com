@@ -3,7 +3,7 @@
   --primary-color: #fca311; /* Main color */
   --secondary-color: #ff8000; /* Linear gradient color */
   --background-color: #ffffff; /* Background color */
-  --text-color: #333333; /* Text color */
+  --text-color: #1a1a1a; /* Text color */
   --border-color: #dddddd; /* Border color */
 
   /* Dark mode */
@@ -30,6 +30,10 @@ body {
   color: var(--text-color);
   font-family: "poppins", sans-serif;
   min-height: 100vh;
+}
+
+a {
+  color: var(--text-color);
 }
 
 .dark-mode {
@@ -81,4 +85,47 @@ body {
   mix-blend-mode: luminosity;
   margin-top: 150px;
   margin-left: 5%;
+}
+
+#odometer {
+  color: var(--text-color);
+}
+
+.population_container {
+  /* margin-left: 10%; */
+  margin-top: 40px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  background-color: white;
+  border-radius: 50px;
+  font-size: 20px;
+  border: 0px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--primary-color);
+  width: max-content;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(0.97);
+}
+
+.sources {
+  font-size: 0.5em;
+  margin-top: 20px;
+  transition: all 0.2s;
+}
+
+.sources:hover {
+  color: var(--background-color);
 }

@@ -6,17 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oddsofme - Discover the odds of you</title>
+    <link rel="stylesheet" href="css/odometer.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="dark-mode">
     <div class="hero_blob">
-        <button type="button" id="toggle-mode-button">Toggle mode</button>
+        <button type="button" class="btn" id="toggle-mode-button">Toggle mode</button>
         <a href="#" class="logo">
             <img src="sources/logo.svg" alt="Logo">
         </a>
         <div id="walking_lottie"></div>
-        <div id="counter"></div>
+        <div class="population_container">
+            <div id="odometer" class="odometer"></div>
+            <p>People on earth right now</p>
+            <button type="button" class="btn" id="start-test-btn">Start The Test</button>
+            <a href="sources.html" class="sources">Sources here</a>
+        </div>
     </div>
 
 
@@ -27,6 +33,7 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
+    <script src="script/odometer.js"></script>
     <script src="script/main.js"></script>
 </body>
 

@@ -1,8 +1,12 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
+import router from './router'
+// import LottieVuePlayer from '@lottiefiles/vue-lottie-player'
+import './assets/main.css'
+// import LottieVuePlayer from '@lottiefiles/vue-lottie-player';
+const app = createApp(App)
 
-createApp(App).mount('#app')
+app.use(router)
+// app.use(LottieVuePlayer)
 
-console.log("hello")
-
+app.mount('#app')

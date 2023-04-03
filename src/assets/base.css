@@ -1,0 +1,48 @@
+:root {
+  /* Light mode */
+  --primary-color: #fca311; /* Main color */
+  --secondary-color: #ff8000; /* Linear gradient color */
+  --background-color: #ffffff; /* Background color */
+  --text-color: #1a1a1a; /* Text color */
+  --border-color: #dddddd; /* Border color */
+
+  /* Dark mode */
+  --dark-primary-color: #e5a55e; /* Main color */
+  --dark-secondary-color: #ffb84d; /* Linear gradient color */
+  --dark-background-color: #333333; /* Background color */
+  --dark-text-color: #ffffff; /* Text color */
+  --dark-border-color: #999999; /* Border color */
+
+  /* Spacing */
+  --padding-small: 10px;
+  --padding-medium: 20px;
+  --padding-large: 30px;
+  --margin-small: 10px;
+  --margin-medium: 20px;
+  --margin-large: 30px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Light mode */
+    --primary-color: var(--dark-primary-color); /* Main color */
+    --secondary-color: var(--dark-secondary-color); /* Linear gradient color */
+    --background-color: var(--dark-background-color); /* Background color */
+    --text-color: var(--dark-text-color); /* Text color */
+    --border-color: var(--dark-border-color); /* Border color */
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "poppins", sans-serif;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--text-color);
+}

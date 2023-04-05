@@ -21,17 +21,78 @@ async function getData() {
     // console.log(population.value)
 }
 getData()
-// 2s interval getData()
+
 setInterval(getData, 2000)
 
+function startTest() {
+    const people_graphic = document.querySelector('.people_graphic')
+    if (people_graphic instanceof HTMLElement) {
+        people_graphic.style.transform = 'scale(3)'
+        people_graphic.style.opacity = '0'
+    }
+    const hero_blob = document.querySelector('.hero_blob')
+    if (hero_blob instanceof HTMLElement) {
+        hero_blob.style.transform = 'translateX(-100%)'
+    }
+    const oddsofme_graphic = document.querySelector('.oddsofme_graphic')
+    if (oddsofme_graphic instanceof HTMLElement) {
+        oddsofme_graphic.style.transform = 'translate(-50%, -50%) scale(0)'
+    }
+
+
+
+    // wait 1 second for animation to finish
+    setTimeout(() => {
+        // click on .startTest 
+        const startTestPsuedoLink = document.querySelector('.startTest')
+        if (startTestPsuedoLink instanceof HTMLElement) {
+            startTestPsuedoLink.click();
+        }
+    }, 900);
+}
 </script>
+
+<template>
+    <section id="landing_page">
+        <div class="hero_blob">
+            <a href="#" class="logo">
+                <img src="@/assets/images/logo.svg" alt="Logo">
+            </a>
+            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_h4mjsyjz.json" background="transparent"
+                speed="1" style="width: 300px; height: 300px;" loop autoplay id="walking_lottie"></lottie-player>
+            <div class="population_container">
+
+                <div id="odometer" class="odometer">{{ population }}</div>
+                <p>People on earth right now</p>
+                <button type="button" class="btn" id="start-test-btn" @click="startTest">Start The Test</button>
+                <RouterLink to="/sources" class="sources">Sources here</RouterLink>
+                <RouterLink to="/start" class="startTest"></RouterLink>
+            </div>
+        </div>
+        <div class="oom_graphic_container">
+            <img src="@/assets/images/oddsofme_graphic.png" alt="Oddsofme Graphic" class="oddsofme_graphic">
+            <img src="@/assets/images/people.png" class="people_graphic">
+        </div>
+    </section>
+</template>
 <style>
 @import "@/assets/resources/odometer.css";
 
 #landing_page {
-    background-image: url("@/assets/images/people.png");
-    background-position: -100% 50%;
+    outline: 2px solid red;
     position: relative;
+    transition: var(--transitionL);
+    overflow: hidden;
+}
+
+.oom_graphic_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .oddsofme_graphic {
@@ -41,7 +102,14 @@ setInterval(getData, 2000)
     width: 40%;
     height: auto;
     transform: translate(-50%, -50%);
-    pointer-events: none;
+    transition: var(--transitionL);
+}
+
+.people_graphic {
+    position: absolute;
+    left: 15%;
+    transform: scale(1.1);
+    transition: var(--transitionL);
 }
 
 .hero_blob {
@@ -63,8 +131,10 @@ setInterval(getData, 2000)
     /* Center the text horizontally and vertically */
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
+    z-index: 5;
+    position: relative;
+
+    transition: var(--transitionL);
 }
 
 #walking_lottie {
@@ -87,39 +157,29 @@ setInterval(getData, 2000)
 }
 
 #odometer {
-    color: var(--text-color);
+    color: var(--odometer-color);
+    font-size: 0.7em;
+    color: #362E2E;
 }
 
 .population_container p {
-    margin-top: var(--padding-small);
+    color: var(--odometer-color);
 }
 
 .sources {
     font-size: 0.5em;
     margin-top: var(--padding-small);
     transition: all 0.2s;
+    color: var(--odometer-color);
 }
 
 .sources:hover {
-    color: var(--background-color);
+    color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    .oddsofme_graphic {
+        filter: invert(1);
+    }
 }
 </style>
-<template>
-    <section id="landing_page">
-        <div class="hero_blob">
-            <a href="#" class="logo">
-                <img src="@/assets/images/logo.svg" alt="Logo">
-            </a>
-            <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_h4mjsyjz.json" background="transparent"
-                speed="1" style="width: 300px; height: 300px;" loop autoplay id="walking_lottie"></lottie-player>
-            <div class="population_container">
-
-                <div id="odometer" class="odometer">{{ population }}</div>
-                <p>People on earth right now</p>
-                <button type="button" class="btn" id="start-test-btn">Start The Test</button>
-                <RouterLink to="/sources" class="sources">Sources here</RouterLink>
-            </div>
-        </div>
-        <img src="@/assets/images/oddsofme_graphic.png" alt="Oddsofme Graphic" class="oddsofme_graphic">
-    </section>
-</template>

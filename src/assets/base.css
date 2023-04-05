@@ -5,6 +5,8 @@
   --background-color: #ffffff; /* Background color */
   --text-color: #1a1a1a; /* Text color */
   --border-color: #dddddd; /* Border color */
+  --odometer-color: #362E2E; /* Odometer color */
+
 
   /* Dark mode */
   --dark-primary-color: #e5a55e; /* Main color */
@@ -20,6 +22,11 @@
   --margin-small: 10px;
   --margin-medium: 20px;
   --margin-large: 30px;
+
+  /* Transitions */
+  --transition: 0.3s ease-in-out;
+  --transitionM: 0.5s ease-in-out;
+  --transitionL: 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 @media (prefers-color-scheme: dark) {

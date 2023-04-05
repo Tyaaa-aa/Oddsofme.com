@@ -24,20 +24,18 @@ getData()
 
 setInterval(getData, 2000)
 
+const peopleGraphic = ref({
+    transform: 'scale(1)',
+    opacity: '1'
+}),
+    hero_blob = ref(),
+    oddsofme_graphic = ref('translate(-50%, -50%) scale(1)')
+
 function startTest() {
-    const people_graphic = document.querySelector('.people_graphic')
-    if (people_graphic instanceof HTMLElement) {
-        people_graphic.style.transform = 'scale(3)'
-        people_graphic.style.opacity = '0'
-    }
-    const hero_blob = document.querySelector('.hero_blob')
-    if (hero_blob instanceof HTMLElement) {
-        hero_blob.style.transform = 'translateX(-100%)'
-    }
-    const oddsofme_graphic = document.querySelector('.oddsofme_graphic')
-    if (oddsofme_graphic instanceof HTMLElement) {
-        oddsofme_graphic.style.transform = 'translate(-50%, -50%) scale(0)'
-    }
+    peopleGraphic.value.transform = 'scale(3)'
+    peopleGraphic.value.opacity = '0'
+    hero_blob.value = 'translateX(-100%)'
+    oddsofme_graphic.value = 'translate(-50%, -50%) scale(0)'
 
 
 
@@ -48,16 +46,16 @@ function startTest() {
         if (startTestPsuedoLink instanceof HTMLElement) {
             startTestPsuedoLink.click();
         }
-    }, 900);
+    }, 400);
 }
 </script>
 
 <template>
     <section id="landing_page">
-        <div class="hero_blob">
-            <a href="#" class="logo">
+        <div class="hero_blob" :style="{ transform: hero_blob }">
+            <RouterLink to="/" class="logo">
                 <img src="@/assets/images/logo.svg" alt="Logo">
-            </a>
+            </RouterLink>
             <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_h4mjsyjz.json" background="transparent"
                 speed="1" style="width: 300px; height: 300px;" loop autoplay id="walking_lottie"></lottie-player>
             <div class="population_container">
@@ -70,8 +68,9 @@ function startTest() {
             </div>
         </div>
         <div class="oom_graphic_container">
-            <img src="@/assets/images/oddsofme_graphic.png" alt="Oddsofme Graphic" class="oddsofme_graphic">
-            <img src="@/assets/images/people.png" class="people_graphic">
+            <img src="@/assets/images/oddsofme_graphic.png" alt="Oddsofme Graphic" class="oddsofme_graphic"
+                :style="{ transform: oddsofme_graphic }">
+            <img src="@/assets/images/people.png" class="people_graphic" :style="peopleGraphic">
         </div>
     </section>
 </template>

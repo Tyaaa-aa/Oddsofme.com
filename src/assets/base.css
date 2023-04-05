@@ -4,6 +4,7 @@
   --secondary-color: #ff8000; /* Linear gradient color */
   --background-color: #ffffff; /* Background color */
   --text-color: #1a1a1a; /* Text color */
+  --text-color-light: #ffffff; /* Text color light */
   --border-color: #dddddd; /* Border color */
   --odometer-color: #362E2E; /* Odometer color */
 
@@ -26,7 +27,7 @@
   /* Transitions */
   --transition: 0.3s ease-in-out;
   --transitionM: 0.5s ease-in-out;
-  --transitionL: 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+  --transitionL: 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 @media (prefers-color-scheme: dark) {
